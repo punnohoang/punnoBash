@@ -1,0 +1,18 @@
+### Lenh co ban
+mkdir myfolder
+cd myfolder
+touch hello.txt
+mv hello.txt hi.txt
+cp hi.txt copy.txt
+rm copy.txt
+cd ..
+rmdir myfolder
+##### Xem nd file
+cat #Xem toan bo
+less #Xem tung trang
+head -n 5 filename.txt  # Xem 5 dòng đầu
+tail -n 5 filename.txt  # Xem 5 dòng cuối
+####### Tim kiem
+find . -name "*.txt"          # Tìm file có đuôi .txt
+grep "error" logfile.txt      # Tìm chữ "error" trong file
+grep -i "warning" logfile.txt # Không phân biệt hoa thường

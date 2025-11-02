@@ -1,0 +1,17 @@
+punno@hoang:~/punnoBash/day1$ mkdir practice1
+punno@hoang:~/punnoBash/day1$ cd practice1
+punno@hoang:~/punnoBash/day1/practice1$ touch a.txt b.txt c.txt
+punno@hoang:~/punnoBash/day1/practice1$ echo "A Xin chao" > a.txt
+punno@hoang:~/punnoBash/day1/practice1$ cp a.txt b.txt
+punno@hoang:~/punnoBash/day1/practice1$ mv b.txt message.txt
+punno@hoang:~/punnoBash/day1/practice1$ find . -name "*.txt"
+./a.txt
+./c.txt
+./message.txt
+punno@hoang:~/punnoBash/day1/practice1$ cat practice1
+cat: practice1: No such file or directory
+punno@hoang:~/punnoBash/day1/practice1$ cat message.txt
+A Xin chao
+punno@hoang:~/punnoBash/day1/practice1$ grep "Xin chao" message.txt
+A Xin chao
+punno@hoang:~/punnoBash/day1/practice1$ less message.txt
