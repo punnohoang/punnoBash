@@ -1,0 +1,12 @@
+punno@hoang:~/punnoBash/day2$ touch names.txt
+punno@hoang:~/punnoBash/day2$ echo "Hoang" >names.txt
+punno@hoang:~/punnoBash/day2$ echo "Phong" >>names.txt
+punno@hoang:~/punnoBash/day2$ echo "An" >> names.txt
+punno@hoang:~/punnoBash/day2$ echo "Minh" >> names.txt
+punno@hoang:~/punnoBash/day2$ cat names.txt
+Hoang
+Phong
+An
+Minh
+
+grep "a" |wc -l
