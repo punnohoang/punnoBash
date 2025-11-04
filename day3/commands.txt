@@ -1,0 +1,15 @@
+### Tao bien moi truong
+punno@hoang:~/day3$ nano ~/.bashrc
+export MY_NAME="Hoang Phong"
+punno@hoang:~/day3$ source ~/.bashrc
+punno@hoang:~/day3$ echo $MY_NAME
+
+### Alias (bi danh)
+# Tam thoi
+alias ll='ls -lah'
+alias gs='git status'
+#Vinh vien
+punno@hoang:~/day3$ nano ~/.bashrc
+alias update='sudo apt update && sudo apt upgrade -y'
+punno@hoang:~/day3$ source ~/.bashrc
+
