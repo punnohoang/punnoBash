@@ -1,0 +1,19 @@
+1. Cron là gì?
+
+cron là trình quản lý tác vụ định kỳ của Linux.
+Bạn có thể đặt lịch cho Bash script chạy tự động.
+
+crontab -e
+
+* * * * * echo "Xin chào lúc $(date)" >> ~/cronlog.txt
+
+| Trường | Ý nghĩa          | Giá trị                    |
+| ------ | ---------------- | -------------------------- |
+| 1      | Phút             | 0–59                       |
+| 2      | Giờ              | 0–23                       |
+| 3      | Ngày trong tháng | 1–31                       |
+| 4      | Tháng            | 1–12                       |
+| 5      | Ngày trong tuần  | 0–7 (0 hoặc 7 là Chủ nhật) |
+
+0 8 * * * /home/hoang/backup.sh
+
