@@ -12,4 +12,15 @@ alias gs='git status'
 punno@hoang:~/day3$ nano ~/.bashrc
 alias update='sudo apt update && sudo apt upgrade -y'
 punno@hoang:~/day3$ source ~/.bashrc
+### Thay doi quyen
+chmod +x script.sh     # Thêm quyền chạy
+chmod 755 script.sh    # rwxr-xr-x
+
+Cách đọc:
+7 = rwx
+6 = rw-
+5 = r-x
+4 = r--
+
+sudo chown user:group filename
 
