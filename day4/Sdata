@@ -1,0 +1,7 @@
+#!/bin/bash
+usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+if [ $usage -gt 80 ]; then
+  echo "⚠️ Ổ đĩa đầy $usage%, hãy dọn dẹp!"
+else
+  echo "✅ Ổ đĩa an toàn: $usage%"
+fi
