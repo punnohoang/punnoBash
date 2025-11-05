@@ -1,0 +1,58 @@
+Filesystem  Size  Used Avail Use% Mounted on
+/dev/sda1   100G   70G   30G  70% /
+``` |
+| `tail -1` | Lấy dòng cuối (bỏ qua tiêu đề).  
+→ `"/dev/sda1   100G   70G   30G  70% /"` |
+| `awk '{print $5}'` | In ra cột thứ 5 (Use%)  
+→ `70%` |
+| `sed 's/%//'` | Bỏ ký tự `%` để còn lại **số 70** |
+| `usage=$(...)` | Gán kết quả vào biến `usage` |
+
+👉 Kết quả:  
+Nếu ổ đĩa đang dùng 70%, thì `usage=70`
+
+---
+
+### ⚙️ 3️⃣ `if [ $usage -gt 80 ]; then`
+
+- Đây là câu điều kiện **if** trong Bash.  
+- `-gt` nghĩa là **greater than** (lớn hơn).  
+- Dòng này kiểm tra:
+  > Nếu `$usage` > 80 (nghĩa là dùng hơn 80% dung lượng) thì…
+
+---
+
+### ⚠️ 4️⃣ `echo "⚠️ Ổ đĩa đầy $usage%, hãy dọn dẹp!"`
+
+- Nếu điều kiện đúng (dung lượng > 80%), in cảnh báo:
+  > ⚠️ Ổ đĩa đầy 85%, hãy dọn dẹp!
+
+---
+
+### ✅ 5️⃣ `else` … `echo "✅ Ổ đĩa an toàn: $usage%"`
+
+- Nếu điều kiện sai (≤ 80%), in thông báo an toàn:
+  > ✅ Ổ đĩa an toàn: 65%
+
+---
+
+### 🔚 6️⃣ `fi`
+
+- Kết thúc khối `if`.
+
+---
+
+## 📘 Kết quả ví dụ:
+
+| Trạng thái ổ đĩa | Output script |
+|------------------|----------------|
+| 75% | ✅ Ổ đĩa an toàn: 75% |
+| 90% | ⚠️ Ổ đĩa đầy 90%, hãy dọn dẹp! |
+
+---
+
+## 💡 Ứng dụng thực tế
+
+- Bạn có thể thêm script này vào **cron job** để tự động kiểm tra mỗi ngày:
+  ```bash
+  0 8 * * * /home/hoang/check_disk.sh >> /home/hoang/disk_log.txt
