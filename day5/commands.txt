@@ -1,0 +1,11 @@
+Cấu trúc lệnh: shutdown[option][time][wall]
+Option:
+-h : shutdown
+-r : restart
+-c : cancel pending shutdown
+Time:
+now : thực hiện ngay lập tức
+hh:mm : ấn định thời gian thực hiện
++m : sau m phút dẽ thực hiện
+Wall: message thông báo
+Ví dụ : shutdown -r +10 "Khoi dong lai may tinh sau 10 phut"
