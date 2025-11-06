@@ -1,0 +1,31 @@
+Power ON/Restart
+
+#1. System Startup/Hardware initilazation (BIOS/System start)
+gọi port xem phần cứng có sẵn sàng hay không
+kiểm tra trạng thái phần cứng rồi báo lại nếu có lỗi
+
+##2.Boot loader Stage 1 (MBR loading) 
+MBR- Master Boot Record
+nơi lưu trữ setter đầu tiên , chỗ lưu trữ thông tin nào
+
+###3.Boot loader Stage 2 (GRUB Boot loader)
+hiển thị ra chọn hệ điều hành nào để dùng rồi mới đi nạp cái ở dưới
+
+####4.Kernel (Linux OS)
+đưa vào trong này để vào ram thực thi hệ điều hành
+
+#####5.INIT process (run levels)
+nhiều level khác nhau nhưng chỉ cần nắm được 2 cái
+Multi-user.target-> ở chế độ command không có giao diện 
+phải dùng lệnh để điều khiển thiết bị 
+#systemctl set default multi-user.target
+Graphical.target có giao điện để làm việc
+#systemctl set default graphical.target
+Chuyển đổi giữa các levels:
+#systemctl isolate multi-user.target
+hoặc
+#systemctl isolate graphical.target
+
+######6.User prompt (user commands)
+nhập mật khẩu vủa username để đăng nhập vào máy tính
+
