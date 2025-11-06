@@ -1,0 +1,14 @@
+-Xem nội tổng dung lượng, dung lượng hiện tại đang dùng, dung lượng còn trống.
+Có 2 lệnh đó là:
+- Lệnh: cat/proc/meminfo
+	lệnh cat: dùng để đọc nội dung của file text
+	/proc/meminfo: đây là đường dẫn ( đường dẫn tuyệt đối)
+	tới file chứa thông tin RAM có tên là meninfo
+- Lệnh: free
+	-b Hiển thị theo bytes
+	-k Hiển thị theo kilobytes
+	-m Hiển thị theo megabytes
+	-g Hiển thị theo gigabytes
+	--tera Hiển thị theo terabytes
+	-h Hiển thị theo kiểu tự động gom theo khối dữ liệu
+vd: free -g
