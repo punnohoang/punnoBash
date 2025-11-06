@@ -29,3 +29,14 @@ hoặc
 ######6.User prompt (user commands)
 nhập mật khẩu vủa username để đăng nhập vào máy tính
 
+#######################################################
+
+INIT
+-Run level 0 (init 0): chế độ tắt máy
+-Run level 1 (init 1): chế độ này chỉ sử dụng được một người dùng
+-Run level 2 (init 2): chế độ đa nguời dùng nhưng không có dịch vụ NFS
+-Run level 3 (init 3): chế độ đa nguời dùng, có đầy đủ các dịch vụ
+-Run level 4 (init 4): chưa được sử dụng
+-Run level 5 (init 5): chế độ đồ họa
+-Run level 6 (init 6): khởi động lại máy
+-Cú pháp: # init
