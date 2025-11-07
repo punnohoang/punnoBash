@@ -1,3 +1,5 @@
+
+##### Xem thong tin RAM
 -Xem nội tổng dung lượng, dung lượng hiện tại đang dùng, dung lượng còn trống.
 Có 2 lệnh đó là:
 - Lệnh: cat/proc/meminfo
@@ -12,3 +14,17 @@ Có 2 lệnh đó là:
 	--tera Hiển thị theo terabytes
 	-h Hiển thị theo kiểu tự động gom theo khối dữ liệu
 vd: free -g
+
+##### Xem thong tin CPU
+
+- Lệnh: cat/proc/cpuinfo
+
+##### Xem thông tin kernel
+
+- Lệnh: uname
+	uname -a (all infomation)
+
+##### Xem dung lượng ổ cứng
+
+-Xem dung lượng ổ cứng đã dùng và còn trống bao nhiêu: df -h
+-option: -h (in kích thước mà người dùng có thể đọc)

@@ -1,0 +1,7 @@
+| Giai đoạn                              | Mục tiêu                                     | Kỹ năng cần học                                                                                           |
+| -------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **1️⃣ Linux căn bản (bạn đã bắt đầu)**   | Biết thao tác, quản lý file, quyền, dịch vụ  | `bash`, `chmod`, `chown`, `systemctl`, `cron`, `ps`, `top`, `df`, `du`, `grep`, `awk`                     |
+| **2️⃣ Quản trị người dùng & phân quyền** | Tạo user, nhóm, phân quyền truy cập thư mục  | `useradd`, `passwd`, `usermod`, `groupadd`, `chown`, `chmod`, `/etc/sudoers`                              |
+| **3️⃣ Server & dịch vụ hệ thống**        | Triển khai ứng dụng, khởi động cùng hệ thống | `systemd`, `nginx`, `postgres`, `firewall`, `ufw`, `ssh`, `scp`                                           |
+| **4️⃣ Theo dõi & giám sát**              | Biết xem log, theo dõi CPU, RAM, tiến trình  | `top`, `htop`, `journalctl`, `ps`, `netstat`, `ss`, `df`, `du`, `logrotate`, `crontab`                    |
+| **5️⃣ Làm việc nhóm, quản lý dự án**     | Theo dõi tiến trình, phân công việc          | Git + GitHub/GitLab + CI/CD, quản lý quyền truy cập SSH, Docker, Jenkins, Prometheus/Grafana (monitoring) |
