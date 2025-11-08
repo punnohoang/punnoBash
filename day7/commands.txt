@@ -1,0 +1,36 @@
+sudo useradd hoang
+# Tạo user mới tên "hoang"
+
+sudo useradd -m -s /bin/bash developer
+# -m: tự tạo thư mục /home/developer
+# -s: chọn shell mặc định (bash)
+
+cat /etc/passwd | grep developer
+# Xem thông tin user trong file hệ thống
+##################################
+sudo passwd developer
+# Đặt hoặc thay đổi mật khẩu user developer
+##################################
+sudo usermod -aG sudo developer
+# Thêm user developer vào nhóm sudo (có quyền admin)
+
+sudo usermod -d /data/devhome developer
+# Đổi thư mục home của user
+################################
+sudo groupadd devteam
+# Tạo nhóm devteam
+
+sudo usermod -aG devteam hoang
+# Thêm user hoang vào nhóm devteam
+
+#################################
+sudo visudo
+# Mở file cấu hình an toàn
+
+# Thêm dòng sau để user developer có toàn quyền sudo
+developer ALL=(ALL) NOPASSWD:ALL
+###############################
+sudo chown developer:devteam /var/www/project
+sudo chmod 770 /var/www/project
+# → chỉ developer và nhóm devteam được truy cập
+
