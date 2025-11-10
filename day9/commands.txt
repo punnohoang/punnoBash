@@ -1,0 +1,88 @@
+🎯 Mục tiêu:
+
+Tạo, quản lý người dùng, nhóm và phân quyền truy cập tài nguyên.
+
+1. useradd
+
+💡 Lý thuyết:
+Tạo một tài khoản người dùng (user) mới trên hệ thống.
+
+📘 Ví dụ:
+
+sudo useradd hoang
+# Tạo user mới tên "hoang"
+
+sudo useradd -m -s /bin/bash developer
+# -m: tự tạo thư mục /home/developer
+# -s: chọn shell mặc định (bash)
+
+
+📂 Kiểm tra:
+
+cat /etc/passwd | grep developer
+# Xem thông tin user trong file hệ thống
+
+2. passwd
+
+💡 Lý thuyết:
+Đặt hoặc thay đổi mật khẩu cho người dùng.
+
+📘 Ví dụ:
+
+sudo passwd developer
+# Đặt hoặc thay đổi mật khẩu user developer
+
+3. usermod
+
+💡 Lý thuyết:
+Thay đổi thông tin của user (ví dụ: nhóm, thư mục home, shell, v.v.)
+
+📘 Ví dụ:
+
+sudo usermod -aG sudo developer
+# Thêm user developer vào nhóm sudo (có quyền admin)
+
+sudo usermod -d /data/devhome developer
+# Đổi thư mục home của user
+
+4. groupadd
+
+💡 Lý thuyết:
+Tạo nhóm người dùng (group) để quản lý quyền theo nhóm.
+
+📘 Ví dụ:
+
+sudo groupadd devteam
+# Tạo nhóm devteam
+
+sudo usermod -aG devteam hoang
+# Thêm user hoang vào nhóm devteam
+
+5. /etc/sudoers
+
+💡 Lý thuyết:
+Quản lý quyền thực thi lệnh với quyền root.
+File này định nghĩa ai có thể dùng sudo.
+
+📘 Ví dụ:
+
+sudo visudo
+# Mở file cấu hình an toàn
+
+# Thêm dòng sau để user developer có toàn quyền sudo
+developer ALL=(ALL) NOPASSWD:ALL
+
+6. Phân quyền thư mục
+
+📘 Ví dụ:
+
+sudo chown developer:devteam /var/www/project
+sudo chmod 770 /var/www/project
+# → chỉ developer và nhóm devteam được truy cập
+
+✅ Tổng kết Giai đoạn 2:
+Chủ đề	Lệnh	Mục đích
+Tạo user	useradd, passwd	Quản lý tài khoản người dùng
+Nhóm	groupadd, usermod -aG	Quản lý quyền nhóm
+Quyền root	/etc/sudoers	Cấp quyền đặc biệt
+Phân quyền	chown, chmod	Kiểm soát truy cập thư mục
