@@ -1,0 +1,16 @@
+---
+- name: Tạo file data cho user2
+  copy:
+    content: |
+      ╔══════════════════════════════════╗
+      ║        BACKEND SERVER            ║
+      ╚══════════════════════════════════╝
+      Tên: user2
+      Vai trò: Backend & Database
+      Chủ sở hữu: HoangPhong (Platform Engineer)
+      Thời gian: {{ ansible_date_time.iso8601 }}
+      Trạng thái: Đang học siêu chăm chỉ!
+    dest: /home/user2/myname.txt
+    owner: user2
+    group: user2
+    mode: '0644'

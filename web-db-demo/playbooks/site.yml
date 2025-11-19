@@ -1,0 +1,7 @@
+---
+- name: HoangPhong Platform Demo – Cấu trúc chuẩn 2025
+  hosts: all
+  become: yes
+  roles:
+    - web
+    - database

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>user1 – Frontend Server</title>
+  <style>
+    body {font-family: Arial; text-align:center; margin-top:100px; background:#f8f9fa;}
+    pre {background:#e9ecef; padding:20px; border-radius:8px; display:inline-block;}
+  </style>
+</head>
+<body>
+  <h1 style="color:#c62828">Frontend Server – user1</h1>
+  <h2>Dữ liệu từ Backend (user2):</h2>
+  <pre>{{ lookup('file', '/home/user2/myname.txt') }}</pre>
+  <p><small>© HoangPhong – Platform Engineer</small></p>
+</body>
+</html>

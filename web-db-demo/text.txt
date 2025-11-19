@@ -1,0 +1,173 @@
+ĐỒNG Ý 100%!  
+Cấu trúc bạn muốn **chính là cấu trúc gọn + chuẩn nhất** mà 90% công ty Việt Nam + rất nhiều team quốc tế đang dùng (gọn, dễ đọc, dễ quản lý).
+
+```bash
+~/web-db-demo/
+├── ansible.cfg
+├── inventory.ini
+└── playbooks/
+    ├── site.yml          ← playbook chính, chỉ gọi role
+    └── roles/
+        ├── web/
+        │   ├── tasks/main.yml
+        │   ├── handlers/main.yml
+        │   └── templates/index.html.j2
+        └── database/
+            └── tasks/main.yml
+```
+
+### BÂY GIỜ TA LÀM CHÍNH XÁC NHƯ BẠN MUỐN – TỪNG LỆNH MỘT
+
+```bash
+# 1. Xóa sạch cái cũ + làm lại đúng ý bạn
+cd ~
+rm -rf web-db-demo
+mkdir web-db-demo && cd web-db-demo
+```
+
+```bash
+# 2. Tạo đúng cấu trúc bạn muốn
+mkdir -p playbooks/roles/{web,database}/{tasks,handlers,templates}
+```
+
+```bash
+# 3. ansiblefile ansible.cfg (không cần gõ -i nữa)
+cat > ansible.cfg << 'EOF'
+[defaults]
+inventory = ./inventory.ini
+roles_path = ./playbooks/roles
+host_key_checking = False
+stdout_callback = yaml
+EOF
+```
+
+```bash
+# 4. inventory.ini – gọn nhất
+cat > inventory.ini << 'EOF'
+[web]
+localhost ansible_user=user1 ansible_connection=local
+
+[database]
+localhost ansible_user=user2 ansible_connection=local
+
+[all:children]
+web
+database
+EOF
+```
+
+```bash
+# 5. site.yml – siêu ngắn gọn
+cat > playbooks/site.yml << 'EOF'
+---
+- name: HoangPhong Platform Demo – Cấu trúc chuẩn 2025
+  hosts: all
+  become: yes
+  roles:
+    - web
+    - database
+EOF
+```
+
+```bash
+# 6. Role web – đầy đủ
+cat > playbooks/roles/web/tasks/main.yml << 'EOF'
+---
+- name: Cài Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Deploy trang chủ từ template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    mode: '0644'
+  notify: reload nginx
+EOF
+
+cat > playbooks/roles/web/handlers/main.yml << 'EOF'
+---
+- name: reload nginx
+  service:
+    name: nginx
+    state: reloaded
+EOF
+
+cat > playbooks/roles/web/templates/index.html.j2 << 'EOF'
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>user1 – Frontend Server</title>
+  <style>
+    body {font-family: Arial; text-align:center; margin-top:100px; background:#f8f9fa;}
+    pre {background:#e9ecef; padding:20px; border-radius:8px; display:inline-block;}
+  </style>
+</head>
+<body>
+  <h1 style="color:#c62828">Frontend Server – user1</h1>
+  <h2>Dữ liệu từ Backend (user2):</h2>
+  <pre>{{ lookup('file', '/home/user2/myname.txt') }}</pre>
+  <p><small>© HoangPhong – Platform Engineer</small></p>
+</body>
+</html>
+EOF
+```
+
+```bash
+# 7. Role database
+cat > playbooks/roles/database/tasks/main.yml << 'EOF'
+---
+- name: Tạo file data cho user2
+  copy:
+    content: |
+      ╔══════════════════════════════════╗
+      ║        BACKEND SERVER            ║
+      ╚══════════════════════════════════╝
+      Tên: user2
+      Vai trò: Backend & Database
+      Chủ sở hữu: HoangPhong (Platform Engineer)
+      Thời gian: {{ ansible_date_time.iso8601 }}
+      Trạng thái: Đang học siêu chăm chỉ!
+    dest: /home/user2/myname.txt
+    owner: user2
+    group: user2
+    mode: '0644'
+EOF
+```
+
+
+##### Cấp quyền 
+# Chắc chắn đang ở user có quyền sudo (punno hoặc user gốc)
+whoami
+
+# Cấp quyền sudo không cần pass cho user1 và user2 (chạy 1 lần là xong mãi mãi)
+sudo bash -c 'echo "user1 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/user1'
+sudo bash -c 'echo "user2 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/user2'
+
+# Sửa quyền file sudoers cho đúng chuẩn
+sudo chmod 0440 /etc/sudoers.d/user1
+sudo chmod 0440 /etc/sudoers.d/user2
+
+
+```bash
+# 8. CHỈ CÒN 1 LỆNH DUY NHẤT MÃI MÃI
+ansible-playbook playbooks/site.yml
+```
+
+```bash
+# 9. Xem kết quả
+xdg-open http://localhost
+```
+
+XONG!  
+Cấu trúc **đúng y như bạn vẽ**, gọn, đẹp, chuẩn công ty, dễ bảo trì, dễ mở rộng.
+
+### Từ giờ bạn chỉ cần nhớ 1 lệnh duy nhất:
+```bash
+ansible-playbook playbooks/site.yml
+```
+
+

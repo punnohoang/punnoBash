@@ -1,0 +1,13 @@
+---
+- name: Cài Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Deploy trang chủ từ template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    mode: '0644'
+  notify: reload nginx
