@@ -1,0 +1,17 @@
+---
+- name: user2 ghi tên mình
+  hosts: db
+  become: yes
+  become_user: user2
+  tasks:
+    - name: Ghi thông tin vào file
+      copy:
+        content: |
+          Tên: user2
+          Vai trò: Database Server
+          Cấu hình bởi: punno
+          Thời gian: {{ ansible_date_time.iso8601 }}
+        dest: /home/user2/myname.txt
+        owner: user2
+        group: user2
+        mode: '0644'
